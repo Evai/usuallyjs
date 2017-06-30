@@ -251,3 +251,33 @@ function strLimit(content,limit) {
         return content;
     return content.substring(0,limit) + '...'
 }
+
+function doExchange(doubleArrays) {
+    var len = doubleArrays.length;
+
+    if (len >= 2) {
+      var len1 = doubleArrays[0].length;
+      var len2 = doubleArrays[1].length;
+      var newLen = len1 * len2;
+      var temp = new Array(newLen);
+      var index = 0;
+
+      for (var i = 0; i < len1; i++) {
+        for (var j = 0; j < len2; j++) {
+          temp[index] = doubleArrays[0][i] + '|' + doubleArrays[1][j];
+          index++;
+        }
+      }
+
+      var newArray = new Array(len - 1);
+      for (var i = 2; i < len; i++) {
+        newArray[i - 1] = doubleArrays[i];
+      }
+      newArray[0] = temp;
+      return doExchange(newArray);
+
+    } else {
+      return doubleArrays[0];
+    }
+
+}
