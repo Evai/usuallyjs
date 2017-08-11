@@ -203,3 +203,19 @@ function doExchange(doubleArrays) {
     }
 
 }
+
+function generateOrderNum() {
+  var time = new Date().getTime();
+  var rand = Math.round(Math.random() * 1000000000000000);
+  return time + '' + rand;
+}
+
+function crypt(str) {
+	var code = 123456789;//密钥
+    var text = "";
+    for(var i=0;i<str.length;i++)//遍历字符数组
+    {
+    	text += String.fromCharCode(str.charCodeAt(i) ^ code)
+    }
+    return text;
+}
